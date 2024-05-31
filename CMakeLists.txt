@@ -29,7 +29,7 @@ add_library(${PROJECT_NAME} SHARED ${QTANDROIDCLS_PROJECT_SOURCES})
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 
-ADD_CUSTOM_COMMAND(TARGET ${PROJECT_NAME} POST_BUILD COMMAND python3 "${CMAKE_SOURCE_DIR}/script/package.py" android)
+ADD_CUSTOM_COMMAND(TARGET ${PROJECT_NAME} POST_BUILD COMMAND python3 "${CMAKE_SOURCE_DIR}/script/output-cpplib.py" android)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS AndroidExtras)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS AndroidExtras)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::AndroidExtras)
