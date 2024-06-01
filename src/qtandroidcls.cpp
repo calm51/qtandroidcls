@@ -10,6 +10,7 @@
 // https://developer.android.com/guide/topics/manifest/application-element.html
 
 
+QtAndroidCls *qtandroidcls_instance = nullptr;
 QtAndroidCls::~QtAndroidCls(){}
 QtAndroidCls::QtAndroidCls(const QString &android_classname) : QObject(){
     this->android_classname = android_classname.toUtf8();
@@ -41,10 +42,8 @@ qint32 QtAndroidCls::get_statusbar_qwiget_height(){
 
 jint registerNativeMethod(JNIEnv* env, jclass clazz, const char* methodName, const char* methodSignature, void* methodPtr) {
     /*
-
 static const JNINativeMethod gMethods[] = { {"function", "()V", (void*)function} };
 jint mj = Environment->RegisterNatives(j_class, gMethods, sizeof(gMethods) / sizeof(gMethods[0]));
-
 */
     JNINativeMethod method = {methodName, methodSignature, methodPtr};
     return env->RegisterNatives(clazz, &method, 1);

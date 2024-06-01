@@ -12,6 +12,9 @@
 #define QTANDROIDCLS_H
 
 
+class QtAndroidCls;
+extern QtAndroidCls *qtandroidcls_instance;
+
 class QtAndroidCls : public QObject{
     Q_OBJECT
 
@@ -19,8 +22,13 @@ public:
     QtAndroidCls(const QtAndroidCls&) = delete;
     QtAndroidCls& operator=(const QtAndroidCls&) = delete;
     static QtAndroidCls* instance(const QString &android_classname="") {
-        static QtAndroidCls instance(android_classname);
-        return &instance;
+        if (qtandroidcls_instance){
+            return qtandroidcls_instance;
+        }
+        qtandroidcls_instance = new QtAndroidCls(android_classname);
+        return qtandroidcls_instance;
+        //        static QtAndroidCls instance(android_classname);
+        //        return &instance;
     }
     ~QtAndroidCls();
 
