@@ -41,6 +41,7 @@ public:
 
     void up_statusbar_height();
     qint32 get_statusbar_qwiget_height();
+    qint32 statusbar_qwiget_height(const qint32 &statusBarHeight);
 
     void to_statusbar_text_white();
     void to_statusbar_text_black();
@@ -55,10 +56,11 @@ public:
     void move_to_background();
 
 
-
     // =======================
 
-    static void emit_statusbarHeightChanged(JNIEnv *env, jobject obj, jint i){emit QtAndroidCls::instance()->statusbarHeightChanged(i);}
+    static void emit_statusbarHeightChanged(JNIEnv *env, jobject obj, jint i){
+        emit QtAndroidCls::instance()->statusbarHeightChanged(QtAndroidCls::instance()->statusbar_qwiget_height(i));
+    }
 
 private:
     QtAndroidCls(const QString &android_classname);

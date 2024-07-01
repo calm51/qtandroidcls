@@ -34,6 +34,10 @@ qint32 QtAndroidCls::get_statusbar_qwiget_height(){
     jclass javaClass = this->env->FindClass(this->android_classname);
     jfieldID intFieldID = this->env->GetFieldID(javaClass, "statusbarHeight", "I");
     qint32 statusBarHeight = this->env->GetIntField(javaObject, intFieldID);
+    return this->statusbar_qwiget_height(statusBarHeight);
+}
+
+qint32 QtAndroidCls::statusbar_qwiget_height(const qint32 &statusBarHeight){
     qreal pixelRatio = QGuiApplication::primaryScreen()->devicePixelRatio();
     qint32 widgetHeight = statusBarHeight / pixelRatio;
     return widgetHeight;
