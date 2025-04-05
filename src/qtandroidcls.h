@@ -1,5 +1,5 @@
 #include <QString>
-#include <QApplication>
+#include <QGuiApplication>
 #include <QDebug>
 #include <QScreen>
 #include "QtAndroid"
@@ -46,7 +46,7 @@ public:
     void to_statusbar_text_white();
     void to_statusbar_text_black();
 
-    void toast(const QString &s);
+    Q_INVOKABLE void toast(const QString &s);
     void speak(const QString &s);
     void notify(const QString &title, const QString &msg);
     void vibrate(const qint32 &t=-1); // -1=长震动 0=取消震动 x=震动秒数

@@ -26,7 +26,7 @@ if __name__ == "__main__":
             "android",
     ): raise ValueError(str(_platform))
     _root_path = os.path.split(cwd)[0]
-    _outside_path = os.path.split(_root_path)[0]
+    _outside_path = os.path.abspath(os.path.join(_root_path, "build")) # os.path.split(_root_path)[0]
     _src_path = os.path.abspath(os.path.join(_root_path, "src"))
     _output_path = os.path.abspath(os.path.join(_root_path, "output"))
     _bin_path = os.path.abspath(os.path.join(_output_path, "bin"))
@@ -72,7 +72,7 @@ if __name__ == "__main__":
             _build_output.append(os.path.join(_outside_path, _d1, f"lib{_name}.dll"))
             # _build_output.append(os.path.join(_outside_path, _d1, f"lib{_name}.dll.a"))
     elif _platform in ("android",):
-        _d1 = f"build-{_root_dir_name}-Qt_5_15_2_Clang_Multi_Abi-Release"
+        _d1 = f"Qt_5_15_2_Clang_Multi_Abi-Release"
         _build_output.append(
             os.path.join(_outside_path, _d1, "android-build", "libs", "armeabi-v7a", f"lib{_name}_armeabi-v7a.so"))
     else:
